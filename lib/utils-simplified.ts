@@ -459,7 +459,7 @@ function generateBlockInsights(blockId: string, percentage: number, level: strin
     }
   }
   
-  return blockInsights[blockId]?.[level] || []
+  return (blockInsights as any)[blockId]?.[level] || []
 }
 
 function generateSpecificActions(responses: Responses, companyInfo: CompanyInfo, blockAnalysis: BlockAnalysis[]): string[] {
@@ -628,7 +628,7 @@ function getStrengthContext(blockId: string, responses: Responses): string {
       : 'tienes una hoja de ruta clara para la transformación digital'
   }
   
-  return contexts[blockId] || 'tienes una base sólida para expandir a otras áreas'
+  return (contexts as any)[blockId] || 'tienes una base sólida para expandir a otras áreas'
 }
 
 function getWeaknessContext(blockId: string, responses: Responses, companyInfo: CompanyInfo): string {
@@ -650,7 +650,7 @@ function getWeaknessContext(blockId: string, responses: Responses, companyInfo: 
       : 'necesitas definir objetivos específicos y medibles para la digitalización'
   }
   
-  return contexts[blockId] || 'requiere atención urgente para el éxito de la transformación digital'
+  return (contexts as any)[blockId] || 'requiere atención urgente para el éxito de la transformación digital'
 }
 
 function generateBlockRecommendations(blockId: string, level: string, companyInfo: CompanyInfo): string[] {
