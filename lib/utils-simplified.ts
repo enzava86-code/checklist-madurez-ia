@@ -426,7 +426,7 @@ function determineInvestmentGuidance(percentage: number, companyInfo: CompanyInf
 function generateBlockInsights(blockId: string, percentage: number, level: string, companyInfo: CompanyInfo): string[] {
   const insights: string[] = []
   
-  const blockInsights = {
+  const blockInsights: Record<string, Record<string, string[]>> = {
     'procesos': {
       'critico': ['Procesos desorganizados frenan cualquier iniciativa digital', 'Sin procesos claros, la IA puede amplificar problemas existentes'],
       'basico': ['Procesos básicos definidos, pero necesitan optimización', 'Falta medición sistemática de la eficiencia'],
@@ -610,7 +610,7 @@ function generatePersonalizedInsights(responses: Responses, companyInfo: Company
 }
 
 function getStrengthContext(blockId: string, responses: Responses): string {
-  const contexts = {
+  const contexts: Record<string, string> = {
     'procesos': responses['proc3'] >= 4 
       ? 'tienes KPIs implementados que te permiten optimizar continuamente'
       : 'tus procesos están bien estructurados, ideal para automatización',
@@ -632,7 +632,7 @@ function getStrengthContext(blockId: string, responses: Responses): string {
 }
 
 function getWeaknessContext(blockId: string, responses: Responses, companyInfo: CompanyInfo): string {
-  const contexts = {
+  const contexts: Record<string, string> = {
     'procesos': responses['proc1'] <= 2 
       ? 'sin procesos documentados, la IA puede amplificar problemas existentes'
       : 'necesitas medir la eficiencia antes de automatizar',
